@@ -5,21 +5,21 @@ Math/tasks </h1>
 
   <h2>Um site pra cadastrar tarefas simples, porem adquiri muito conhecimento em API REST, autenticação com JWT e consumir API no front-end com Axios</h2>
 
-<p>Faça o login pra testar o meu projeto</p>
-    <FormLogin />
+<p>Crie sua conta pra testar meu projeto</p>
+    <FormCriarConta />
 
-    <p>Não tem cadastro?</p>
-    <button class="btn"><router-link to="/registrar">Crie sua conta aqui</router-link></button>
+    <p>Já tem cadastro?</p>
+    <button class="btn" ><router-link to="/">Faça o login aqui</router-link></button>
   </div>
 </template>
 
 <script>
-import FormLogin from '@/components/FormLogin.vue'
+import FormCriarConta from '@/components/FormCriarConta.vue'
 
 export default {
   name: 'Home',
   components: {
-    FormLogin
+    FormCriarConta
   }
   
 }
