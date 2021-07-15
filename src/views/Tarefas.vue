@@ -45,6 +45,7 @@ export default {
       console.log(response);
       this.$store.dispatch("getUsuarioTarefas")
     })
+    this.tarefa = ""
     },
     deslogarUsuario() {
       this.$store.dispatch("deslogarUsuario")
