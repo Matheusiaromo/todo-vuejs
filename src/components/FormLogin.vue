@@ -7,6 +7,7 @@
     <label for="password">Senha</label>
     <input name="password" v-model="login.password" id="password" type="password" >
     <input class="btn" type="submit" value="Acessar">
+    <ErroNotificacao :erros="erros"></ErroNotificacao>
   </form>
 
 </template> 
@@ -21,15 +22,19 @@ export default {
       login: {
         username: "",
         password: ""
-      }
+      },
+      erros: []
       
     }
   },
   methods: {
-    async logar(){
+     logar(){
+       this.erros = []
         this.$store.dispatch("logarUsuario", this.login).then(() => {       
         this.$store.dispatch("getUsuario")
         this.$router.push("/tarefas")
+      }).catch(error => {
+        this.erros.push(error.response.data.message)
       })
     }
   }

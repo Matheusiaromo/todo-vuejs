@@ -9,6 +9,7 @@
     <label for="senha">Senha</label>
     <input name="senha"  v-model="form.password" id="senha" type="password" >
     <input class="btn" type="submit" value="Criar Conta">
+    <ErroNotificacao :erros="erros"></ErroNotificacao>
     
   
   </form>
@@ -26,11 +27,13 @@ export default {
         username: "",
         email: "",
         password: ""
-      }
+      },
+      erros: []
     }
   },
   methods: {
      async criarConta(){
+       this.erros = []
       try {
         await this.$store.dispatch('criarUsuario', {
           "username": this.form.username,
@@ -44,7 +47,7 @@ export default {
         await this.$store.dispatch("getUsuario")
         this.$router.push("/tarefas")
       } catch (error) {
-        console.log(error);
+        this.erros.push(error.response.data.message)
       }
   }
 }
