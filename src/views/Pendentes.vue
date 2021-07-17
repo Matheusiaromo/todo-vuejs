@@ -2,8 +2,8 @@
   <ul>
     <li v-if="!$store.state.tarefas">Nenhuma tarefa cadastrada</li>
     <li v-for="tarefa in tarefas" :key="tarefa.ID" >
-      <div>{{tarefa.post_name}}</div>
-      <div class="delete"><button @click="deletarTarefa(tarefa.ID)">X</button></div>
+      <div>{{tarefa.tarefa[0]}}</div>
+      <div> <button class="completar">Completar</button> <button class="delete" @click="deletarTarefa(tarefa.ID)">X</button></div>
     </li>  
   </ul>
 </template>
@@ -65,7 +65,7 @@ li {
   align-items: center;
 }
 
-.delete button {
+.delete  {
   background-color: #f009;
   color: #fff;
   border: none;
@@ -75,5 +75,14 @@ li {
   height: 20px;
   font-size: 10px;
   font-weight: bold;
+}
+
+.completar {
+  border: none;
+  padding: 5px;
+  background-color: aquamarine;
+  border-radius: 5px;
+  box-shadow: 1px 4px 8px rgba(0,0,0,.2);
+  margin-right: 5px;
 }
 </style>
