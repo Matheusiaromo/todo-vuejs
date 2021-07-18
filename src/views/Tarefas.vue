@@ -99,8 +99,10 @@ form input {
 div.tarefas {
   height: 100vh;
   display: flex;
-  justify-content: initial;
   flex-direction: column;
+  min-width: 400px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 header {

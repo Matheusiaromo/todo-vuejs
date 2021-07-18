@@ -1,9 +1,12 @@
 <template>
-  <ul>
+  <ul class="overf">
     <li v-if="!$store.state.tarefas">Nenhuma tarefa cadastrada</li>
-    <li v-for="tarefa in tarefas" :key="tarefa.ID" >
-      <div>{{tarefa.tarefa[0]}}</div>
-      <div> <button class="completar">Completar</button> <button class="delete" @click="deletarTarefa(tarefa.ID)">X</button></div>
+    <li v-for="tarefa in tarefas" :key="tarefa.id" >
+      <div>{{tarefa.tarefa}}</div>
+        <div> 
+          <button class="completar">Completar</button> 
+          <button class="delete" @click="deletarTarefa(tarefa.id)">X</button>
+        </div>
     </li>  
   </ul>
 </template>
@@ -50,16 +53,21 @@ export default {
 </script>
 
 <style scoped>
+.overf {
+  overflow-y: scroll;
+  max-height: 400px;
+}
 ul {
   width: 100%;
-  background-color: grey;
+  padding: 0px 20px;
+  background-color: #fff;
 }
 
 li {
   width: 100%;
   padding: 10px;
   border-bottom: 1px solid rgba(0,0,0,.2);
-  background-color: #fff;
+  font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;

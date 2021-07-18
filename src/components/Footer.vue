@@ -17,10 +17,9 @@ p {
 
 
   footer {
-    margin-top: 20px;
     background-color:#5C79DF;
-    width: 100%;
     padding: 20px;
     height: 70px;
+    width: 100%;
   }
 </style>

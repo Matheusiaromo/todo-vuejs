@@ -2,7 +2,7 @@
   <div id="app">
    
     
-    <router-view></router-view>
+    <router-view ></router-view>
     <Footer />
   
   </div>
@@ -36,12 +36,8 @@ export default {
   box-sizing: border-box;
 }
 
-#app {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: calc(100vh + 75px);
-}
+
+
 
 body, html {
   font-family: 'Montserrat', sans-serif;

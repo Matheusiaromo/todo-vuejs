@@ -48,7 +48,7 @@ export default {
 
 form {
   max-width: 600px;
-  min-width: 400px;
+  min-width: 380px;
   background-color:#BFC9ED ;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.18);
   border-radius: 10px;
