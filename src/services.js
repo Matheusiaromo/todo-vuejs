@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const axiosInstances = axios.create({
-  baseURL: "http://todolist.local/wp-json"
+  //baseURL: "http://todolist.local/wp-json"
+  baseURL: "https://apitodolist.tk/wp-json"
 })
 
 axiosInstances.interceptors.request.use( 
@@ -28,10 +29,12 @@ export const api  = {
     return axiosInstances.delete(endpoint)
   },
   login(body){
-    return axios.post("http://todolist.local/wp-json/jwt-auth/v1/token/", body)
+    //return axios.post("http://todolist.local/wp-json/jwt-auth/v1/token/", body)
+    return axios.post("https://apitodolist.tk/wp-json/jwt-auth/v1/token/", body)
   },
   validateToken() {
-    return axiosInstances.post("http://todolist.local/wp-json/jwt-auth/v1/token/validate")
+    //return axiosInstances.post("http://todolist.local/wp-json/jwt-auth/v1/token/validate")
+    return axiosInstances.post("https://apitodolist.tk/wp-json/jwt-auth/v1/token/validate")
   }/* ,
   getUsuarioHeader(endpoint){
     return axios.get(endpoint, {
