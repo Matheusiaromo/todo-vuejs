@@ -34,6 +34,7 @@ export default new Vuex.Store({
       api.get(`/api/tarefas`).then(response => {
         console.log(response)
         context.commit("UPDATE_USUARIO_TAREFAS", response.data.data)
+        console.log(response.data)
       })
     },
     logarUsuario(context, payload) {

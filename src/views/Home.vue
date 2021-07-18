@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home" >
     <h1>Bem vindo ao projeto
 Math/tasks </h1>
 
@@ -33,5 +33,14 @@ div {
   justify-content: center;
   align-items: center;
   padding-top: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 80px;
 }
+
+div h2 {
+  max-width: 400px;
+}
+
+
 </style>
