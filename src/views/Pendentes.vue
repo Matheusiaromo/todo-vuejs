@@ -1,7 +1,7 @@
 <template>
   <ul class="overf">
     <li v-if="!$store.state.tarefas">Nenhuma tarefa cadastrada</li>
-    <li v-for="tarefa in tarefas" :key="tarefa.id" >
+    <li v-for="tarefa in tarefas.pendentes" :key="tarefa.id" >
       <div>{{tarefa.tarefa}}</div>
         <div> 
           <button @click="completarTarefa(tarefa.id)" class="completar">Completar</button> 
@@ -60,53 +60,46 @@ export default {
 </script>
 
 <style scoped>
-.overf {
-  overflow-y: scroll;
-  max-height: 400px;
-}
+
+ul li:nth-child(even) {background: #FFF}
+ul li:nth-child(odd) {background: #EEE}
+
 ul {
-  width: 100%;
-  padding: 0px 20px;
-  background-color: #fff;
+  list-style: none;
 }
 
 li {
-  width: 100%;
-  padding: 10px;
-  border-bottom: 1px solid rgba(0,0,0,.2);
+  padding: 10px 20px;
   font-weight: 600;
+  color: #000;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
 }
 
-.delete  {
-  background-color: #f009;
-  color: #fff;
-  border: none;
-  box-shadow: 1px 4px 8px rgba(0,0,0,.2);
-  border-radius: 5px;
+.delete {
   width: 20px;
   height: 20px;
-  font-size: 10px;
-  font-weight: bold;
-}
-
-.delete:hover {
-  transform: scale(1.05);
+  background-color: #f005;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 600;
 }
 
 .completar {
+  height: 20px;
+  background-color: #49BF71;
   border: none;
-  padding: 5px;
-  background-color: aquamarine;
-  border-radius: 5px;
-  box-shadow: 1px 4px 8px rgba(0,0,0,.2);
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 600;
+  padding: 0 5px ;
   margin-right: 5px;
-  cursor: pointer;
+  
 }
 
-.completar:hover {
+.delete:hover , .completar:hover {
   transform: scale(1.05);
 }
 </style>

@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style scoped>
-div {
+div .home{
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -35,7 +35,8 @@ div {
   padding-top: 20px;
   max-width: 900px;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-bottom: 20px;
+
 }
 
 div h2 {

@@ -1,9 +1,15 @@
 <template>
-  <ul class="overf">
-    <li v-if="!$store.state.completas">Nenhuma tarefa completa {{$store.state.completas}}</li>
-    <li v-for="completa in completas" :key="completa.id" >
+  <!-- <ul class="overf">
+    <li v-if="!$store.state.tarefas.completas">Nenhuma tarefa completa</li>
+    <li v-for="completa in tarefas.completas" :key="completa.id" >
       {{completa.tarefa}}
     </li>  
+  </ul> -->
+  <ul class="completas">
+     <li v-if="!$store.state.tarefas.completas">Nenhuma tarefa completa</li>
+    <li :class="{ active: alternarCor = !alternaCor }" v-for="completa in tarefas.completas" :key="completa.id">
+        {{completa.tarefa}}
+    </li>
   </ul>
 </template>
 
@@ -14,6 +20,7 @@ export default {
   name: "Completas",
   data() {
     return {
+      alternaCor: true,
       tarefa: {
         nome: ""
       }
@@ -23,7 +30,7 @@ export default {
     ...mapActions(["getTarefasCompletas"]),
   },
   computed: {
-    ...mapState(["login", "usuario", "completas"])
+    ...mapState(["login", "usuario", "tarefas"])
   },
   watch: {
     login() {
@@ -39,25 +46,18 @@ export default {
 </script>
 
 <style scoped>
-.overf {
-  overflow-y: scroll;
-  max-height: 400px;
-}
+
+ul li:nth-child(even) {background: #FFF}
+ul li:nth-child(odd) {background: #EEE}
+
 ul {
-  width: 100%;
-  padding: 0px 20px;
-  background-color: #fff;
+  list-style: none;
 }
 
 li {
-  width: 100%;
-  padding: 10px;
-  border-bottom: 1px solid rgba(0,0,0,.2);
+  padding: 10px 20px;
   font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  color: #000;
 }
-
 
 </style>

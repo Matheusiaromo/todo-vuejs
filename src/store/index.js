@@ -12,8 +12,10 @@ export default new Vuex.Store({
       id: '',
       nome: ''
     },
-    tarefas: null,
-    completas: null,
+    tarefas:{
+      pendentes: null,
+      completas: null      
+    },
     quantidade: {
       pendentes: 0,
       completas: 0
@@ -27,10 +29,10 @@ export default new Vuex.Store({
       state.usuario = payload
     },
     UPDATE_USUARIO_TAREFAS(state, payload) {
-      state.tarefas = payload
+      state.tarefas.pendentes = payload
     },
     UPDATE_USUARIO_COMPLETAS(state, payload) {
-      state.completas = payload
+      state.tarefas.completas = payload
     },
     ADD_USUARIO_TAREFAS(state, payload) {
       state.tarefas.unshit(payload)

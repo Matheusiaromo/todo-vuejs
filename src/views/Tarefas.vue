@@ -23,7 +23,7 @@
       <router-link to="/tarefas">Pendentes ({{$store.state.quantidade.pendentes}})</router-link>
       <router-link to="/completas">Completas ({{$store.state.quantidade.completas}})</router-link>
     </div>
-    <div><router-view></router-view></div>
+    <div class="divview"><router-view></router-view></div>
   </div>
 </template>
 
@@ -41,9 +41,8 @@ export default {
     adicionarTarefa() { 
     api.post("/api/tarefas", {
       "tarefa" : this.tarefa
-    }).then(response => {
-      console.log(response);
-      this.$store.dispatch("getUsuarioTarefas")
+    }).then(() => {
+      this.$store.dispatch("getTarefasPendentes")
     })
     this.tarefa = ""
     },
@@ -57,6 +56,10 @@ export default {
 
 <style scoped>
 
+.divview {
+  overflow-y: scroll;
+}
+
 .links {
   display: flex;
   justify-content: space-around;
@@ -65,9 +68,6 @@ export default {
   margin-top: 10px;
 }
 
-.links a {
-  color: #000;
-}
 
 
 form input::-webkit-input-placeholder {
@@ -97,7 +97,7 @@ form input {
 }
 
 div.tarefas {
-  height: 100vh;
+  height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   min-width: 400px;
@@ -116,6 +116,9 @@ header {
   align-items: center;
 }
 
+a {
+  color: #000;
+}
 
 
   span {
@@ -128,7 +131,7 @@ color: #5C79DF;
   }
 
   .router-link-exact-active  {
-  color: red;
+  color: #5C79DF;
   font-weight: 600;
 }
 </style>
