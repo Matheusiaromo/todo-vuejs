@@ -4,7 +4,7 @@
     <li v-for="tarefa in tarefas" :key="tarefa.id" >
       <div>{{tarefa.tarefa}}</div>
         <div> 
-          <button class="completar">Completar</button> 
+          <button @click="completarTarefa(tarefa.id)" class="completar">Completar</button> 
           <button class="delete" @click="deletarTarefa(tarefa.id)">X</button>
         </div>
     </li>  
@@ -24,12 +24,19 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["getUsuarioTarefas"]),
+    ...mapActions(["getTarefasPendentes", "getTarefasCompletas"]),
     deletarTarefa(id){
       const confirmar = window.confirm("Deseja remover esse produto?")
       if(confirmar)
       api.delete(`/api/tarefas/${id}`).then(()=> {
-        this.getUsuarioTarefas()
+        this.getTarefasPendentes()
+      }).catch(error => {
+        console.log(error.response);
+      }) 
+    },
+    completarTarefa(id) {
+      api.put(`/api/tarefas/${id}`).then(()=> {
+        this.getTarefasPendentes()
       }).catch(error => {
         console.log(error.response);
       }) 
@@ -41,12 +48,12 @@ export default {
   },
   watch: {
     login() {
-      this.getUsuarioTarefas()
+      this.getTarefasPendentes()
     }
   },
   created() {
     if(this.login) {
-      this.getUsuarioTarefas()
+      this.getTarefasPendentes()
     }
   }
 }
@@ -85,6 +92,10 @@ li {
   font-weight: bold;
 }
 
+.delete:hover {
+  transform: scale(1.05);
+}
+
 .completar {
   border: none;
   padding: 5px;
@@ -92,5 +103,10 @@ li {
   border-radius: 5px;
   box-shadow: 1px 4px 8px rgba(0,0,0,.2);
   margin-right: 5px;
+  cursor: pointer;
+}
+
+.completar:hover {
+  transform: scale(1.05);
 }
 </style>

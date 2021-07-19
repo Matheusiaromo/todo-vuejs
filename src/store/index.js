@@ -12,7 +12,12 @@ export default new Vuex.Store({
       id: '',
       nome: ''
     },
-    tarefas: null
+    tarefas: null,
+    completas: null,
+    quantidade: {
+      pendentes: 0,
+      completas: 0
+    }
   },
   mutations: {
     UPDATE_LOGIN(state, payload) {
@@ -24,19 +29,35 @@ export default new Vuex.Store({
     UPDATE_USUARIO_TAREFAS(state, payload) {
       state.tarefas = payload
     },
+    UPDATE_USUARIO_COMPLETAS(state, payload) {
+      state.completas = payload
+    },
     ADD_USUARIO_TAREFAS(state, payload) {
       state.tarefas.unshit(payload)
+    },
+    UPDATE_QUANTIDADE_PENDENTES(state, payload) {
+      state.quantidade.pendentes = payload
+    },
+    UPDATE_QUANTIDADE_COMPLETAS(state, payload) {
+      state.quantidade.completas = payload
     }
 
   },
   actions: {
-    getUsuarioTarefas(context) {
-      api.get(`/api/tarefas`).then(response => {
-        console.log(response)
+    getTarefasPendentes(context) {
+      api.get(`/api/tarefas`).then(response => {  
         context.commit("UPDATE_USUARIO_TAREFAS", response.data.data)
-        console.log(response.data)
+        context.commit("UPDATE_QUANTIDADE_PENDENTES", response.data.quantidade)
       })
     },
+    getTarefasCompletas(context) {
+      api.get(`/api/completas`).then(response => {
+        console.log(response)
+        context.commit("UPDATE_USUARIO_COMPLETAS", response.data.data)
+        context.commit("UPDATE_QUANTIDADE_COMPLETAS", response.data.quantidade)
+      })
+    },
+
     logarUsuario(context, payload) {
       return api.login({
       username: payload.username,
