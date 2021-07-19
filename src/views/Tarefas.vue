@@ -20,8 +20,8 @@
       </form>
     </div>
     <div class="links">
-      <router-link to="/tarefas">Pendentes</router-link>
-      <router-link to="/completas">Completas</router-link>
+      <router-link to="/tarefas">Pendentes ({{$store.state.quantidade.pendentes}})</router-link>
+      <router-link to="/completas">Completas ({{$store.state.quantidade.completas}})</router-link>
     </div>
     <div><router-view></router-view></div>
   </div>
@@ -116,6 +116,8 @@ header {
   align-items: center;
 }
 
+
+
   span {
     font-family: Montserrat;
 font-style: normal;
@@ -124,4 +126,9 @@ font-size: 16px;
 line-height: 18px;
 color: #5C79DF;
   }
+
+  .router-link-exact-active  {
+  color: red;
+  font-weight: 600;
+}
 </style>

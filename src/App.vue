@@ -11,9 +11,21 @@
 <script>
 import {api} from '@/services'
 import Footer from '@/components/Footer.vue'
+import {mapState, mapActions} from 'vuex'
 export default {
   components: {
     Footer
+  },
+  methods: {
+    ...mapActions(["getTarefasCompletas"]),
+  },
+  computed: {
+    ...mapState(["login", "usuario", "completas"])
+  },
+  watch: {
+    login() {
+      this.getTarefasCompletas()
+    }
   },
   created() {
     if(window.localStorage.token) {
@@ -23,7 +35,11 @@ export default {
         window.localStorage.removeItem("token")
       })
     }
-  }
+    if(this.login) {
+      this.getTarefasCompletas()
+    }
+}
+
 }
 </script>
 
@@ -87,4 +103,6 @@ font-size: 16px;
 line-height: 20px;
 color: #1844E0;
 }
+
+
 </style>
