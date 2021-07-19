@@ -2,7 +2,7 @@
   <div id="app">
    
     
-    <router-view ></router-view>
+    <router-view class="routerview" ></router-view>
     <Footer />
   
   </div>
@@ -46,18 +46,28 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
 
+.routerview {
+  flex: 1;
+}
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
 
-
-
-
 body, html {
   font-family: 'Montserrat', sans-serif;
 }
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+
 
 body {
   background: #CED2E0;
